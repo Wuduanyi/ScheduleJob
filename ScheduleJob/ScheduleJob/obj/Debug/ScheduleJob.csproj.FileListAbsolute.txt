@@ -1,0 +1,9 @@
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\bin\Debug\ScheduleJob.exe.config
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\bin\Debug\ScheduleJob.exe
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\bin\Debug\ScheduleJob.pdb
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\obj\Debug\ScheduleJob.Form1.resources
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\obj\Debug\ScheduleJob.Properties.Resources.resources
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\obj\Debug\ScheduleJob.csproj.GenerateResource.cache
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\obj\Debug\ScheduleJob.csproj.CoreCompileInputs.cache
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\obj\Debug\ScheduleJob.exe
+C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\obj\Debug\ScheduleJob.pdb

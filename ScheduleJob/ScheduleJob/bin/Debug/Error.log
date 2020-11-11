@@ -1,0 +1,7 @@
+Exception Occurred :系统找不到指定的文件。,   在 System.Diagnostics.Process.StartWithShellExecuteEx(ProcessStartInfo startInfo)
+   在 System.Diagnostics.Process.Start()
+   在 ScheduleJob.FixedTimePointSchedule.DoAction() 位置 C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\FixedTimePointSchedule.cs:行号 80
+Exception Occurred :StandardOut 未重定向或者该进程尚未启动。,   在 System.Diagnostics.Process.get_StandardOutput()
+   在 ScheduleJob.FixedTimePointSchedule.DoAction() 位置 C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\FixedTimePointSchedule.cs:行号 81
+Exception Occurred :StandardOut 未重定向或者该进程尚未启动。,   在 System.Diagnostics.Process.get_StandardOutput()
+   在 ScheduleJob.FixedTimePointSchedule.DoAction() 位置 C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\FixedTimePointSchedule.cs:行号 81
