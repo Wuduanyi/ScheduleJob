@@ -36,8 +36,9 @@ namespace ScheduleJob
             DateTime dateTime = dateTimePicker.Value;
             if (m_schedule == null)
             {
-                m_schedule = new FixedTimePointSchedule(dateTime, m_batFilePath, m_repeat);
+                m_schedule = new FixedTimePointSchedule();
             }
+            m_schedule.Reset(dateTime, m_batFilePath, m_repeat);
             m_schedule.Start();
         }
 
@@ -75,7 +76,18 @@ namespace ScheduleJob
         {
             e.Cancel = true;    //取消窗体关闭事件
             this.WindowState = FormWindowState.Minimized;   //最小化窗口
+            this.Hide();
             this.ShowInTaskbar = false;		//在Windows任务栏中不显示窗体
+        }
+
+        //调整窗体大小的时候触发的事件
+        private void Form1_Resize(object sender, EventArgs e)
+        {
+            if (this.WindowState == FormWindowState.Minimized)//当窗体设置值为最小化时
+            {
+                this.Hide();
+                this.ShowInTaskbar = false;//在任务栏中显示该窗口
+            }
         }
 
         private void CloseToolStripMenuItem_Click(object sender, EventArgs e)

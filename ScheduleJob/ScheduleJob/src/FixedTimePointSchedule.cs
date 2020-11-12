@@ -26,17 +26,16 @@ namespace ScheduleJob
 
         public FixedTimePointSchedule()
         {
-            
+            //获取UI线程同步上下文 
+            m_syncContext = System.Threading.SynchronizationContext.Current;
+            m_scheduleState = ScheduleState.None;
         }
 
-        public FixedTimePointSchedule(DateTime dateTime, string batFilePath, bool repeat)
+        public void Reset(DateTime dateTime, string batFilePath, bool repeat)
         {
-            m_scheduleState = ScheduleState.None;
             m_dateTime = dateTime;
             m_batFilePath = batFilePath;
             Repeat = repeat;
-            //获取UI线程同步上下文 
-            m_syncContext = System.Threading.SynchronizationContext.Current;
         }
 
         public override void Start()
@@ -79,7 +78,6 @@ namespace ScheduleJob
             Logger.Debug("时间到了，目前时间: " + DateTime.Now.ToString());
             // 执行事件
             DoAction();
-
             Stop();
             if (Repeat)
             {
@@ -140,11 +138,13 @@ namespace ScheduleJob
                 m_timer.Dispose();
                 m_timer = null;
                 m_syncContext.Post(PostEvent, false);
+                m_scheduleState = ScheduleState.None;
             }
         }
 
         private void PostEvent(object obj)
         {
+            
             bool state = bool.Parse(obj.ToString());
             EventSystem.EventSystem.Instance.PostEvent(EventSystem.EEvent.TimerStateChange, state);
         }

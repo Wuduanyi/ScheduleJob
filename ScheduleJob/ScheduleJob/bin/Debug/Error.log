@@ -50,3 +50,5 @@ Exception Occurred :StandardOut 未重定向或者该进程尚未启动。,   �
    在 ScheduleJob.FixedTimePointSchedule.DoAction() 位置 C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\src\FixedTimePointSchedule.cs:行号 104
 Exception Occurred :StandardOut 未重定向或者该进程尚未启动。,   在 System.Diagnostics.Process.get_StandardOutput()
    在 ScheduleJob.FixedTimePointSchedule.DoAction() 位置 C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\src\FixedTimePointSchedule.cs:行号 105
+Exception Occurred :StandardOut 未重定向或者该进程尚未启动。,   在 System.Diagnostics.Process.get_StandardOutput()
+   在 ScheduleJob.FixedTimePointSchedule.DoAction() 位置 C:\Users\Admin\source\repos\ScheduleJob\ScheduleJob\src\FixedTimePointSchedule.cs:行号 103
