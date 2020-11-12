@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Timers;
 using System.Windows.Forms;
+using EventSystem;
 
 namespace ScheduleJob
 {
     public partial class Form1 : Form
     {
+        private string m_batFilePath;
+        private bool m_repeat;
+        private FixedTimePointSchedule m_schedule;
+
         public Form1()
         {
             InitializeComponent();
@@ -21,7 +17,13 @@ namespace ScheduleJob
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            EventSystem.EventSystem.Instance.RegisterEvent<bool>(EventSystem.EEvent.TimerStateChange, OnTimerStateChange);
+            OnTimerStateChange(false);
+        }
 
+        private void OnTimerStateChange(bool state)
+        {
+            stateLabel.Text = state ? "任务开启中" : "任务已经暂停了";
         }
 
         private void dateTimePicker1_ValueChanged(object sender, EventArgs e)
@@ -32,13 +34,17 @@ namespace ScheduleJob
         private void StartButton_Click(object sender, EventArgs e)
         {
             DateTime dateTime = dateTimePicker.Value;
-            FixedTimePointSchedule schedule = new FixedTimePointSchedule(dateTime, false);
-            schedule.Start();
+            if (m_schedule == null)
+            {
+                m_schedule = new FixedTimePointSchedule(dateTime, m_batFilePath, m_repeat);
+            }
+            m_schedule.Start();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
-
+            if (m_schedule != null)
+                m_schedule.Stop();
         }
 
         private void label1_Click(object sender, EventArgs e)
@@ -84,9 +90,22 @@ namespace ScheduleJob
             WindowState = FormWindowState.Normal;
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
+            OpenFileDialog dialog = new OpenFileDialog();
+            dialog.Title = "请选择文件路径";
+            dialog.Filter = "批处理文件(*.bat)|*.bat";
 
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                m_batFilePath = dialog.FileName;
+                label4.Text = dialog.FileName;
+            }
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            m_repeat = checkBox1.Checked;
         }
     }
 }
